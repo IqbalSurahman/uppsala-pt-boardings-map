@@ -1,0 +1,28 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stop 1",
+        "description": "Description of Stop 1"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [17.6389, 59.8586]  // Example coordinates for Uppsala
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stop 2",
+        "description": "Description of Stop 2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [17.6400, 59.8600]  // Example coordinates for Uppsala
+      }
+    }
+    // Additional stops can be added here
+  ]
+}

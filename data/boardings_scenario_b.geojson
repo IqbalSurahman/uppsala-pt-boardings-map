@@ -1,0 +1,38 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "stop_1",
+        "boardings": 150
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [17.6389, 59.8586]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "stop_2",
+        "boardings": 200
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [17.6400, 59.8600]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "stop_3",
+        "boardings": 120
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [17.6410, 59.8610]
+      }
+    }
+  ]
+}
