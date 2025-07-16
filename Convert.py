@@ -3,7 +3,7 @@ import os
 
 def convert_shp_to_geojson(shp_path, output_dir=None):
     """
-    Converts a shapefile to GeoJSON format.
+    Converts a shapefile to GeoJSON format (WGS84/EPSG:4326).
 
     Parameters:
     - shp_path: str, path to the input .shp file
@@ -19,6 +19,9 @@ def convert_shp_to_geojson(shp_path, output_dir=None):
     if gdf.crs is None:
         gdf.set_crs("EPSG:3006", inplace=True)
 
+    # Reproject to WGS84 (EPSG:4326) for GeoJSON
+    gdf = gdf.to_crs("EPSG:4326")
+
     # Determine output directory
     if output_dir is None:
         output_dir = os.path.dirname(shp_path)
@@ -33,13 +36,9 @@ def convert_shp_to_geojson(shp_path, output_dir=None):
     return geojson_path
 
 # Run the conversion:
-
-
-# Define input and output paths
 shp_path = "shp/Hållplatser_UA2034_stop.shp"
-output_dir = "assets/"
+output_dir = "data/"
 os.makedirs(output_dir, exist_ok=True)
-
 
 geojson_file = convert_shp_to_geojson(shp_path, output_dir)
 print(f"GeoJSON file saved to: {geojson_file}")
