@@ -21,10 +21,15 @@ function pointToCircleMarker(feature, latlng) {
     });
 }
 
-// Function to bind popup with stop name
+// Function to bind popup with stop name and Board DY
 function onEachStop(feature, layer) {
     const stopName = feature.properties && feature.properties.name ? feature.properties.name : 'No name';
-    layer.bindPopup(`<strong>Stop:</strong> ${stopName}`);
+    const boardDY = feature.properties && feature.properties['Board DY'] !== undefined
+        ? feature.properties['Board DY']
+        : 'okänt';
+    layer.bindPopup(
+        `<strong>Stop:</strong> ${stopName}<br><strong>Påstigande per dygn:</strong> ${boardDY}`
+    );
 }
 
 // Load stops GeoJSON and add to map
