@@ -28,6 +28,10 @@ def convert_shp_to_geojson(shp_path, output_dir=None):
     else:
         gdf['name'] = ''  # fallback: empty string
 
+    # Rename PASSBOAR~1 to Board DY if it exists
+    if 'PASSBOAR~1' in gdf.columns:
+        gdf = gdf.rename(columns={'PASSBOAR~1': 'Board DY'})
+
     # Determine output directory
     if output_dir is None:
         output_dir = os.path.dirname(shp_path)
