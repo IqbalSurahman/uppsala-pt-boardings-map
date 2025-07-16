@@ -3,7 +3,7 @@ import os
 
 def convert_shp_to_geojson(shp_path, output_dir=None):
     """
-    Converts a shapefile to GeoJSON format (WGS84/EPSG:4326).
+    Converts a shapefile to GeoJSON format (WGS84/EPSG:4326) and ensures a 'name' property from 'NAME'.
 
     Parameters:
     - shp_path: str, path to the input .shp file
@@ -21,6 +21,12 @@ def convert_shp_to_geojson(shp_path, output_dir=None):
 
     # Reproject to WGS84 (EPSG:4326) for GeoJSON
     gdf = gdf.to_crs("EPSG:4326")
+
+    # Always create 'name' column from 'NAME'
+    if 'NAME' in gdf.columns:
+        gdf['name'] = gdf['NAME']
+    else:
+        gdf['name'] = ''  # fallback: empty string
 
     # Determine output directory
     if output_dir is None:
